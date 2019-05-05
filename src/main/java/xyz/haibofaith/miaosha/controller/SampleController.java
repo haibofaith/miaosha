@@ -34,4 +34,14 @@ public class SampleController {
         UserInfo userInfo = userInfoSerivice.getById(1);
         return Result.success(userInfo);
     }
+
+
+    @RequestMapping("/dbTx")
+    @ResponseBody
+    public Result<Boolean> dbTx(){
+        boolean b = userInfoSerivice.tx();
+        return Result.success(b);
+    }
+
+
 }
