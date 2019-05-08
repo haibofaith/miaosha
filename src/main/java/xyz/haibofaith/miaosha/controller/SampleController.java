@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.haibofaith.miaosha.model.UserInfo;
+import xyz.haibofaith.miaosha.redis.MiaoshaUserKey;
 import xyz.haibofaith.miaosha.redis.RedisService;
+import xyz.haibofaith.miaosha.redis.UserKey;
 import xyz.haibofaith.miaosha.result.CodeMsg;
 import xyz.haibofaith.miaosha.result.Result;
 import xyz.haibofaith.miaosha.service.UserInfoSerivice;
@@ -50,15 +52,15 @@ public class SampleController {
     @RequestMapping("/redisGet")
     @ResponseBody
     public Result<String> redisGet(){
-        Long value = redisService.get("key1",Long.class);
+        String value = redisService.get(MiaoshaUserKey.token,"key2",String.class);
         return Result.success(value.toString());
     }
 
     @RequestMapping("/redisSet")
     @ResponseBody
     public Result<String> redisSet(){
-        boolean b = redisService.set("key2","hello,bobo");
-        String value = redisService.get("key2",String.class);
+        boolean b = redisService.set(MiaoshaUserKey.token,"key2","hello,bobo");
+        String value = redisService.get(MiaoshaUserKey.token,"key2",String.class);
         return Result.success(value);
     }
 
