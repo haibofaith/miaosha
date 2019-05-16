@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xyz.haibofaith.miaosha.dao.UserInfoDao;
+import xyz.haibofaith.miaosha.model.LoginUser;
 import xyz.haibofaith.miaosha.model.UserInfo;
 
 /**
@@ -29,5 +30,9 @@ public class UserInfoSerivice {
         userInfo2.setName("shiwu");
         userInfoDao.insert(userInfo2);
         return true;
+    }
+
+    public LoginUser getByUsername(String username){
+        return userInfoDao.getByUsername(username);
     }
 }

@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import xyz.haibofaith.miaosha.model.LoginUser;
 import xyz.haibofaith.miaosha.model.UserInfo;
 
 @Mapper
@@ -12,4 +13,6 @@ public interface UserInfoDao {
     public UserInfo getById(@Param("id") int id);
     @Insert("insert into user_info(id,name) values(#{id},#{name})")
     void insert(UserInfo userInfo);
+    @Select("select * from login_user where username = #{username}")
+    public LoginUser getByUsername(@Param("username") String username);
 }
