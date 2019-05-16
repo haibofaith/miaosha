@@ -14,6 +14,8 @@ import xyz.haibofaith.miaosha.result.Result;
 import xyz.haibofaith.miaosha.service.UserInfoSerivice;
 import xyz.haibofaith.miaosha.util.MD5Util;
 
+import javax.validation.Valid;
+
 /**
  * @author:haibo.xiong
  * @date:2019/5/14
@@ -27,7 +29,7 @@ public class LoginController {
     private UserInfoSerivice userInfoSerivice;
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
-    public Result<LoginUser> login(@RequestBody LoginUser loginUser){
+    public Result<LoginUser> login(@Valid @RequestBody LoginUser loginUser){
         logger.info("loginUser:"+loginUser.toString());
         LoginUser result = userInfoSerivice.getByUsername(loginUser.getUsername());
         if (result==null){

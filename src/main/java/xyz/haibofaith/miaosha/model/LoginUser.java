@@ -1,5 +1,10 @@
 package xyz.haibofaith.miaosha.model;
 
+import org.hibernate.validator.constraints.Length;
+import xyz.haibofaith.miaosha.validator.IsMobile;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * @author:haibo.xiong
  * @date:2019/5/14
@@ -7,8 +12,12 @@ package xyz.haibofaith.miaosha.model;
  */
 public class LoginUser {
     private Integer id;
+    @NotNull
+    @IsMobile(required = true)
     private String username;
+    @NotNull
     private String password;
+    @NotNull
     private String salt;
 
     public String getSalt() {
